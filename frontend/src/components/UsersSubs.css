@@ -1,18 +1,39 @@
+*,
+ul,
+li,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: black;
+}
+
+ul {
+  list-style: none;
+}
+
+.card-link {
+  text-decoration: none;
+  color: black;
+}
+
 .section-title-area {
   display: flex;
   flex-direction: row;
-  justify-content: start;
+  justify-content: spaсe-between;
   align-items: center;
   gap: 15px;
 }
 
 .add-sub-button {
-  text-decoration: none;
-  border: none;
   min-width: 40px; 
-  min-height: 35px;
+  min-height: 40px;
+  border: none;
   border-radius: 100%;
-  font-size: 25px;
+  font-size: 15px;
+  text-decoration: none;
   background-color: #c497f0;
 }
 
@@ -22,13 +43,14 @@
 
 .add-sub-button:hover {
   border-radius: 20px;
-  transition: all 0.3;
+  box-shadow: 23px 17px 13px -15px rgba(34, 60, 80, 0.15);
+  transition: box-shadow 0.3s;
 }
 
 .add-sub-button:hover::after {
   content: "Добавить подписку";
-  opacity: 0;
   border-radius: 10px;
+  opacity: 0;
 }
 
 .add-sub-button:hover::after {
@@ -43,15 +65,15 @@
 
 
 .subscriptions-container {
-  background-color: rgb(243, 243, 243);
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 2px;
-  overflow-x: scroll;
   min-height: 400px;
-  padding: 20px;
   border-radius: 20px;
+  padding: 20px;
+  overflow-x: scroll;
+  background-color: rgb(243, 243, 243);
 }
 
 @media (width <= 1070px) {
@@ -61,8 +83,9 @@
 }
 
 .subscription-list-item {
-  width: fit-content;
-  height: fit-content;
+  min-width: 380px;
+  min-height: fit-content;
+  padding: 0;
 }
 
 .subscriptions-content {
@@ -76,23 +99,23 @@
   display: flex;
   flex-direction: column;
   gap: 15px;
-  background-color: #fff;
   height: 400px;
-  aspect-ratio: 1/1;
   border: 1px solid gray;
   border-radius: 20px;
   padding: 20px;
-  transform: scale(0.9);
+  background-color: #fff;
   transition: transform 0.2s ease;
+  transform: scale(0.9);
+  aspect-ratio: 1/1;
 }
 
 .subscription-card:hover {
+  border-color: #c497f0;
   box-shadow: 4px 9px 21px 3px rgba(34, 60, 80, 0.2);
   transition: box-shadow 0.3s;
-  border-color: #c497f0;
   transition: border-color 0.5s;
-  transform: scale(0.95);
   transition: transform 0.2s ease;
+  transform: scale(0.95);
 }
 
 .subscription-card:hover > .sub-name {
@@ -114,29 +137,22 @@
   flex-direction: row;
   flex-wrap: wrap;
   gap: 6px;
-  overflow: scroll;
   max-height: 183px;
+  overflow: scroll;
 }
 
 .sub-category {
-  padding: 6px;
   border-radius: 8px;
-  background-color: #8047b9;
-  color: white; 
+  padding: 6px;
+  color: white;
+  background-color: #8047b9; 
 }
 
 .sub-category:hover {
-  background-color: white;
   border: 1px solid black;
-  color: black;
   padding: 5px;
+  color: black;
+  background-color: white;
   transition: background-color 0.2s;
 }
 
-ul {
-  list-style: none;
-}
-
-.card-link {
-  text-decoration: none;
-}

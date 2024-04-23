@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import axios from 'axios';
 import './UsersSubs.css';
 import {Link} from "react-router-dom";
@@ -6,6 +6,10 @@ import {Link} from "react-router-dom";
 const UsersSubs = () => {
   const [userId, setUserId] = useState(null);
   const [subscriptions, setSubscriptions] = useState([]);
+
+  const cachedSubscriptions = useMemo(() => {
+    return subscriptions;
+  }, [subscriptions]);
 
   useEffect(() => {
     const storedUserId = localStorage.getItem('userId');
@@ -38,7 +42,7 @@ const UsersSubs = () => {
     <div className="subscriptions-page">
       <div className="subscriptions-content">
         <div className='section-title-area'>
-          <h2 className='section-main-title'>Все подписки</h2>
+          <h2 className='section-main-title'>Все подписки ({subscriptions.length})</h2>
           <Link to={'/add-subscription'}>
             <button className='add-sub-button'></button>
           </Link>

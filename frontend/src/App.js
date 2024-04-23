@@ -26,17 +26,17 @@ function App() {
   return (
     <Router>
       <div>
-        <nav>
-          <ul>
-            <li>
+        <nav className="navigation-bar">
+          <ul className='navigation-bar-list'>
+            <li className='navigation-item'>
               <NavLink to="/" activeClassName="active">Основная</NavLink>
             </li>
             {isLoggedIn && (
               <>
-                <li>
+                <li className='navigation-item'>
                   <NavLink to="/subscription" activeClassName="active">Мои подписки</NavLink>
                 </li>
-                <li>
+                <li className='navigation-item'>
                   <NavLink to="/add-subscription" activeClassName="active">Добавить подписку</NavLink>
                 </li>
 
@@ -44,16 +44,16 @@ function App() {
             )}
             {isLoggedIn ? (
               <>
-                <li>
+                <li className="navigation-item">
                   <NavLink to="/exit" onClick={handleLogout}>Выход</NavLink>
                 </li>
               </>
             ) : (
               <>
-                <li>
+                <li className='navigation-item'>
                   <NavLink to="/login" activeClassName="active">Вход</NavLink>
                 </li>
-                <li>
+                <li className='navigation-item'>
                   <NavLink to="/register" activeClassName="active">Регистрация</NavLink>
                 </li>
               </>

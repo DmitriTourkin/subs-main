@@ -1,37 +1,51 @@
 /* App.css */
 
-nav {
+.navigation-bar {
   background-color: #333;
   overflow: hidden;
+  padding: 20px;
+  box-shadow: 4px 9px 21px 3px rgba(34, 60, 80, 0.2);
 }
 
-nav ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  text-align: center;
+@media (width <= 950px) {
+  .navigation-bar {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 20px;
+    margin-right: 20px; 
+    border-radius: 20px;
+    width: 100%;
+  }
 }
 
-nav li {
+.navigation-bar-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  gap: 15px;
+}
+
+.navigation-bar .navigation-item {
   display: inline-block;
-  margin-right: 20px;
+  border-radius: 20px;
 }
 
-nav li:last-child {
-  margin-right: 0;
-}
-
-nav a {
+.navigation-item a {
   display: block;
   color: white;
   text-decoration: none;
   padding: 10px 15px;
 }
 
-nav a:hover {
-  background-color: #9c78ce;
+.navigation-item a:hover {
+  background-color: transparent;
+  border: 1px solid white;
+  padding: 9px 14px;
+  border-radius: 20px;
 }
 
 .active {
   background-color: #9c78ce;
+  border-radius: 20px;
+  pointer-events: none;
 }

@@ -71,21 +71,23 @@ const Login = ({ onLogin }) => {
   }
 
   return (
-    <div className="register-container">
-      <h2>Вход</h2>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      <form onSubmit={handleSubmit}>
-        <label>
-          Имя пользователя:
-          <input type="text" name="username" value={formData.username} onChange={handleChange} />
-        </label>
-        <label>
-          Пароль:
-          <input type="password" name="password" value={formData.password} onChange={handleChange} />
-        </label>
-        <button type="submit">Войти</button>
-      </form>
-    </div>
+    <section className="register-content">
+      <div className="register-container">
+        <h2>Вход</h2>
+        {error && <p style={{ color: 'red' }}>{error}</p>}
+        <form onSubmit={handleSubmit}>
+          <label>
+            Имя пользователя:
+            <input type="text" name="username" value={formData.username} onChange={handleChange} />
+          </label>
+          <label>
+            Пароль:
+            <input type="password" name="password" value={formData.password} onChange={handleChange} />
+          </label>
+          <button type="submit">Войти</button>
+        </form>
+      </div>
+    </section>
   );
 };
 

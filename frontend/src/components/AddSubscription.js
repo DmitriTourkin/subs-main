@@ -1,31 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './AddSubscription.css';
-import AdaptiveSelect from './AdaptiveSelect';
-
 
 const AddSubscription = () => {
-  const [choosenOptions, setChoosenOptions] = useState([]);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // Оля
   const [formData, setFormData] = useState({
     name: '',
     price: 0,
@@ -102,6 +79,12 @@ const AddSubscription = () => {
     }
   };
 
+  let choosenOptions = [];
+
+  useEffect(() => {
+    choosenOptions = categories.filter(category => formData.categories.includes(String(category.id)))
+  }, [formData.categories])
+
   return (
     <div className='form-wrapper'>
       <div className="form-container">
@@ -112,20 +95,21 @@ const AddSubscription = () => {
           <input className="subscription-title-input" type="text" name="name" id="name" placeholder="Название подписки" value={formData.name} onChange={handleChange} />
           <label>
             Категории:
-            {/* <AdaptiveSelect choosenOptions = {choosenOptions} setChoosenOptions = {setChoosenOptions} categoriesData={categories}/> */}
+            <ul className='categories-data choice'>
             {categories.map(category => (
-              <div key={category.id}>
+              <li key={category.id} className='sub-category add'>
                 <input
+                  className="category-checkbox"
                   type="checkbox"
                   name="categories"
                   value={String(category.id)}
                   checked={formData.categories.includes(String(category.id))}
                   onChange={handleCheckboxChange}
                 />
-
                 <span>{category.name}</span>
-              </div>
+              </li>
             ))}
+            </ul>
           </label>
           <label className="form-label">Цена (в руб.):
             <input className="form-control" type="number" name="price" value={formData.price} onChange={handleChange} />

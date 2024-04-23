@@ -40,6 +40,7 @@ const Register = ({ onRegister }) => {
   };
 
 return (
+  <section className='register-content'>
     <div className="register-container">
       <h2>Регистрация</h2>
       {error && <p style={{ color: 'red' }}>{error}</p>}
@@ -71,6 +72,7 @@ return (
         <button type="submit">Зарегистрироваться</button>
       </form>
     </div>
+  </section>
   );
 };
 
