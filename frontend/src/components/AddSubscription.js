@@ -1,8 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './AddSubscription.css';
+import AdaptiveSelect from './AdaptiveSelect';
+
 
 const AddSubscription = () => {
+  const [choosenOptions, setChoosenOptions] = useState([]);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // Оля
   const [formData, setFormData] = useState({
     name: '',
     price: 0,
@@ -80,44 +103,42 @@ const AddSubscription = () => {
   };
 
   return (
-    <div className="form-container">
-      <h1>Создание подписки</h1>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      <form onSubmit={handleSubmit}>
-        <label>
-          Название подписки:
-          <input type="text" name="name" value={formData.name} onChange={handleChange} />
-        </label>
-        <label>
-          Категории:
-          {categories.map(category => (
-            <div key={category.id}>
-              <input
-                type="checkbox"
-                name="categories"
-                value={String(category.id)}
-                checked={formData.categories.includes(String(category.id))}
-                onChange={handleCheckboxChange}
-              />
+    <div className='form-wrapper'>
+      <div className="form-container">
+        <span class="visually-hidden">Создание подписки</span>
+        {error && <p style={{ color: 'red' }}>{error}</p>}
+        <form className="subs-form" onSubmit={handleSubmit}>
+          <label className="visually-hidden" for="name">Название подписки</label>
+          <input className="subscription-title-input" type="text" name="name" id="name" placeholder="Название подписки" value={formData.name} onChange={handleChange} />
+          <label>
+            Категории:
+            {/* <AdaptiveSelect choosenOptions = {choosenOptions} setChoosenOptions = {setChoosenOptions} categoriesData={categories}/> */}
+            {categories.map(category => (
+              <div key={category.id}>
+                <input
+                  type="checkbox"
+                  name="categories"
+                  value={String(category.id)}
+                  checked={formData.categories.includes(String(category.id))}
+                  onChange={handleCheckboxChange}
+                />
 
-              <span>{category.name}</span>
-            </div>
-          ))}
-        </label>
-        <label>
-          Цена (в руб.):
-          <input type="number" name="price" value={formData.price} onChange={handleChange} />
-        </label>
-        <label>
-          Период (в днях):
-          <input type="number" name="period" value={formData.period} onChange={handleChange} />
-        </label>
-        <label>
-          Дата подписки:
-          <input type="date" name="subscription_date" value={formData.subscription_date} onChange={handleChange} />
-        </label>
-        <button type="submit">Создать подписку</button>
-      </form>
+                <span>{category.name}</span>
+              </div>
+            ))}
+          </label>
+          <label className="form-label">Цена (в руб.):
+            <input className="form-control" type="number" name="price" value={formData.price} onChange={handleChange} />
+          </label>
+          <label className="form-label">Период (в днях):
+            <input className="form-control" type="number" name="period" value={formData.period} onChange={handleChange} />
+          </label>
+          <label className="form-label">Дата подписки:
+            <input className="form-control" type="date" name="subscription_date" value={formData.subscription_date} onChange={handleChange} />
+          </label>
+          <button className="btn btn-dark submit-button" type="submit">Создать подписку</button>
+        </form>
+      </div>
     </div>
   );
 };

@@ -1,0 +1,139 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+li,
+blockquote {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: inherit;
+}
+
+.custom-select {
+  position: relative;
+  max-width: 100%;
+  margin: 0 auto;
+  border-color: black;
+}
+
+.select-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  border: 1px lightgray solid;
+  border-radius: 10px 10px 10px 10px;
+  vertical-align: center;
+  color: lightgray;
+}
+
+.select-header:has(.chosen-category) {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-shrink: none;
+  gap: 15px;
+  overflow-y: auto;
+}
+
+.chosen-category {
+  border: 1px solid black;
+  border-radius: 10px 10px 10px 10px;
+  padding-right: 20px;
+  padding-left: 20px;
+  box-shadow: 5px 7px 9px -1px rgba(34, 60, 80, 0.2);
+  color: black;
+  background-color: bisque;
+}
+
+.custom-select:has(.select-body.show){
+  align-content: baseline;
+  border-radius: 10px 10px 10px 10px;
+  box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2) inset;
+}
+
+.select-header:hover {
+  box-shadow: 5px 7px 9px -1px rgba(34, 60, 80, 0.2);
+  cursor: pointer;
+}
+
+.select-body {
+  display: none;
+}
+
+.select-body.show {
+  position: absolute;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  height: 190px;
+  margin-top: 8px;
+  border: 2px black solid;
+  border-radius: 10px 10px 10px 10px;
+  box-shadow: 0px 5px 13px 4px rgba(34, 60, 80, 0.28); 
+  overflow-y: scroll;
+  background-color: white;
+}
+
+.select-item {
+  border-radius: 10px 10px 10px 10px;
+  padding: 3px;
+  box-shadow: 5px 7px 9px -1px rgba(34, 60, 80, 0.2);
+  background-color: white;
+}
+
+.select-item-body {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  border-radius: 10px 10px 10px 10px;
+  padding: 3px;
+  cursor: pointer;
+}
+
+.pseudo-checkbox { 
+  display: block;
+  justify-self: center;
+  box-sizing: border-box;
+  width: 20px;
+  height: 20px;
+  margin: 10px;
+  border: 1px black solid;
+  border-radius: 20%;
+}
+
+.hidden-checkbox {
+  display: none;
+}
+
+input[type='checkbox']:checked + .pseudo-checkbox {
+  display: block;
+  box-sizing: border-box;
+  width: 20px;
+  height: 20px;
+  margin: 10px;
+  background-image: url('iconChecked.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.select-item-body:has(input[type='checkbox']:checked) {
+  background-color:  rgb(244, 115, 181); 
+}
+
+.select-value {
+  display: flex;
+  align-items: center;
+}
+

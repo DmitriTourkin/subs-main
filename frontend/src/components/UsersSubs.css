@@ -1,25 +1,142 @@
+.section-title-area {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  gap: 15px;
+}
+
+.add-sub-button {
+  text-decoration: none;
+  border: none;
+  min-width: 40px; 
+  min-height: 35px;
+  border-radius: 100%;
+  font-size: 25px;
+  background-color: #c497f0;
+}
+
+.add-sub-button::after{
+  content: "+";
+}
+
+.add-sub-button:hover {
+  border-radius: 20px;
+  transition: all 0.3;
+}
+
+.add-sub-button:hover::after {
+  content: "Добавить подписку";
+  opacity: 0;
+  border-radius: 10px;
+}
+
+.add-sub-button:hover::after {
+  content: "Добавить подписку";
+  border-radius: 10px;
+  transition: opacity 0.3s;
+}
+
+.add-sub-button:hover::after {
+  opacity: 1;
+}
+
+
 .subscriptions-container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-}
-
-.subscription-item {
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  background-color: rgb(243, 243, 243);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2px;
+  overflow-x: scroll;
+  min-height: 400px;
   padding: 20px;
-  background-color: #f9f9f9;
+  border-radius: 20px;
 }
 
-.subscription-item h2 {
-  margin-top: 0;
-  margin-bottom: 10px;
+@media (width <= 1070px) {
+  .subscriptions-container {
+    flex-wrap: wrap;
+  }
 }
 
-.subscription-item p {
-  margin: 5px 0;
+.subscription-list-item {
+  width: fit-content;
+  height: fit-content;
 }
 
-.subscription-item span {
-  margin-right: 5px;
+.subscriptions-content {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin: 30px 70px;
+}
+
+.subscription-card {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background-color: #fff;
+  height: 400px;
+  aspect-ratio: 1/1;
+  border: 1px solid gray;
+  border-radius: 20px;
+  padding: 20px;
+  transform: scale(0.9);
+  transition: transform 0.2s ease;
+}
+
+.subscription-card:hover {
+  box-shadow: 4px 9px 21px 3px rgba(34, 60, 80, 0.2);
+  transition: box-shadow 0.3s;
+  border-color: #c497f0;
+  transition: border-color 0.5s;
+  transform: scale(0.95);
+  transition: transform 0.2s ease;
+}
+
+.subscription-card:hover > .sub-name {
+  color: #8047b9; 
+  transition: color 0.3s;
+}
+
+.subscription-card:hover:active > .sub-name{
+  color: rgb(109, 1, 136);
+  transition: color 0.2s;
+}
+
+.par-title {
+  font-weight: bold;
+}
+
+.categories-data {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 6px;
+  overflow: scroll;
+  max-height: 183px;
+}
+
+.sub-category {
+  padding: 6px;
+  border-radius: 8px;
+  background-color: #8047b9;
+  color: white; 
+}
+
+.sub-category:hover {
+  background-color: white;
+  border: 1px solid black;
+  color: black;
+  padding: 5px;
+  transition: background-color 0.2s;
+}
+
+ul {
+  list-style: none;
+}
+
+.card-link {
+  text-decoration: none;
 }

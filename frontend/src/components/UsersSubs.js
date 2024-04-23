@@ -35,23 +35,43 @@ const UsersSubs = () => {
   };
 
   return (
-    <div className="subscriptions-container">
-      {subscriptions.map(subscription => (
-        <div key={subscription.id} className="subscription-item">
-          <Link to={`/subscription/${subscription.id}`} className="link">
-          <h2>{subscription.name}</h2>
+    <div className="subscriptions-page">
+      <div className="subscriptions-content">
+        <div className='section-title-area'>
+          <h2 className='section-main-title'>Все подписки</h2>
+          <Link to={'/add-subscription'}>
+            <button className='add-sub-button'></button>
           </Link>
-          <p><strong>Цена:</strong> {subscription.price} рублей</p>
-          <p><strong>Дата первого списания:</strong> {formatDate(subscription.subscription_date)}</p>
-          <p><strong>Период подписки:</strong> {subscription.period} дней</p>
-          <p><strong>Категории:</strong>
-            {subscription.categories.map(category => (
-              <span key={category.id}> {category.name}</span>
-            ))}
-          </p>
-
         </div>
-      ))}
+        <ul className="subscriptions-container">
+          {subscriptions.map(subscription => (
+            <li key={subscription.id} className="subscription-list-item">
+              <Link to={`/subscription/${subscription.id}`} className="card-link">
+                <div className="subscription-card">
+                  <h2 className='sub-name'>{subscription.name}</h2>
+                  <div className="subs-details">
+                    <p className="sub-parameters"><span className='par-title'>Цена: </span> {subscription.price} рублей</p>
+                    <p className="sub-parameters"><span className='par-title'>Дата первого списания: </span>{formatDate(subscription.subscription_date)}</p>
+                    <p className="sub-parameters"><span className='par-title'>Период подписки: </span>{subscription.period} дней</p>
+                  </div>
+                  <p className="sub-parameters">
+                  <ul className="categories-data">
+                  {subscription.categories.map(category => (
+                    <li className='categories-data-item'>
+                      <p className="sub-category" key={category.id}>{category.name}</p>
+                    </li>
+                  ))}
+                  </ul>
+                </p>
+                </div>
+              </Link>
+            </li>
+          ))}
+          </ul>
+          <section>
+            <h2>Подписки по категориям</h2>
+          </section>
+        </div>
     </div>
   );
 };
