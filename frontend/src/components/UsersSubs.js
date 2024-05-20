@@ -6,6 +6,7 @@ import {Link} from "react-router-dom";
 const UsersSubs = () => {
   const [userId, setUserId] = useState(null);
   const [subscriptions, setSubscriptions] = useState([]);
+  const [categories, setCategories] = useState([]);
 
   const cachedSubscriptions = useMemo(() => {
     return subscriptions;
@@ -27,6 +28,19 @@ const UsersSubs = () => {
       console.error('Failed to fetch subscriptions:', error);
     }
   };
+
+  const fetchCategories = async () => {
+    try {
+      const response = await axios.get('http://127.0.0.1:8000/api/categories/');
+      setCategories(response.data);
+    } catch (error) {
+      console.error('Failed to fetch categories:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchCategories();
+  }, []);
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -72,9 +86,6 @@ const UsersSubs = () => {
             </li>
           ))}
           </ul>
-          <section>
-            <h2>Подписки по категориям</h2>
-          </section>
         </div>
     </div>
   );

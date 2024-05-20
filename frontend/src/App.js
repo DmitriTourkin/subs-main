@@ -91,7 +91,7 @@ function Logout({ onLogout }) {
     onLogout();
   }, [onLogout]);
 
-  return <div>Выход выполнен успешно</div>;
+  return <div className="logout-message">Выход выполнен успешно</div>;
 }
 
 export default App;
